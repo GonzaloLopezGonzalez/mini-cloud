@@ -41,12 +41,7 @@ return [
             'url' => env('APP_URL') . 'storage/uploads/images',
             'visibility' => 'public',
         ],
-        'uploadsImagesGallery' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/uploads/imagesGallery'),
-            'url' => env('APP_URL') . 'storage/uploads/imagesGallery',
-            'visibility' => 'public',
-        ],
+
         'uploadsZip' => [
             'driver' => 'local',
             'root' => storage_path('app/public/uploads/zip'),
