@@ -182,7 +182,6 @@ class File
         return $results;
     }
 
-
     public function showFile($file)
     {
         $storagePath = $this->getFilePath($file);
