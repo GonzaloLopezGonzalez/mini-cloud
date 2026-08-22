@@ -32,10 +32,6 @@ class File
             Storage::disk('uploadsImages')->makeDirectory('');
         }
 
-        if (!Storage::disk('uploadsImagesGallery')->exists('')) {
-            Storage::disk('uploadsImagesGallery')->makeDirectory('');
-        }
-
         if (!Storage::disk('uploadsPdf')->exists('')) {
             Storage::disk('uploadsPdf')->makeDirectory('');
         }
@@ -115,7 +111,7 @@ class File
                 $path = $file->storeAs('', $fileName, 'uploadsImages');
                 $storagePath = $this->getFilePath($file);
                 $fileToReduce = Storage::disk('uploadsImages')->path($path);
-                $fileToReduced = Storage::disk('uploadsImagesGallery')->path($path);
+
                FileHelper::reduceImageSize($fileToReduce, $fileToReduced, 500, 500);
                 break;
             case 'pdf':
@@ -186,19 +182,6 @@ class File
         return $results;
     }
 
-    public function imageGallery()
-    {
-        $files = [];
-        $fileList = Storage::disk('uploadsImagesGallery')->files('');
-        foreach ($fileList as $file) {
-            $files[] = [
-                'name' => basename($file),
-                'ruta' => Storage::disk('uploadsImagesGallery')->url($file)
-            ];
-        }
-
-        return $files;
-    }
 
     public function showFile($file)
     {
